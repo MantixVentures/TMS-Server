@@ -17,6 +17,9 @@ const PORT = 5000;
 app.use(cors());
 
 app.use(express.json());
+app.use("/", (req, res) => {
+    res.send("TMS Server is healthy");
+  });
 app.use("/users", userRoute);
 app.use("/admin", adminRoute);
 app.use("/policeIssueFine", policeIssueFineRoute);
