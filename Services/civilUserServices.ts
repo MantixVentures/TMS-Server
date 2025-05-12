@@ -52,6 +52,8 @@ export class CivilUserService {
             name: user.name
         }
 
+        console.log(response);
+
         return response;
     }
     async registerAdminUser(name: string, email: string, password: string, idNumber: string): Promise<ICivilUser> {
