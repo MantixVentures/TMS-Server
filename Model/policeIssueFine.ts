@@ -25,7 +25,7 @@ const policeIssueFineSchema: Schema = new Schema<IPoliceIssueFine>({
     policeId: { type: String, required: false },
     fineManagementId: { type: String, required: true },
     vehicalNumber: { type: String, required: false },
-    offence: { type: mongoose.Schema.Types.ObjectId, ref: "FineManagement", required: true },
+    offence: { type: mongoose.Schema.Types.ObjectId, ref: "FineManagement", required: false },
 });
 
 const policeIssueFine: Model<IPoliceIssueFine> = mongoose.model<IPoliceIssueFine>("PoliceIssueFine", policeIssueFineSchema)
