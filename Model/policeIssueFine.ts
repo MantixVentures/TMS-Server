@@ -8,7 +8,7 @@ export interface IPoliceIssueFine extends Document {
     date : string;
     time : string;
     isPaid : boolean;
-    type : string;
+    offence : string;
     policeId : string;
     fineManagementId: string;
     
@@ -21,7 +21,7 @@ const policeIssueFineSchema: Schema = new Schema<IPoliceIssueFine>({
     date:{type: String, required: true},
     time: { type: String, required: false },
     isPaid : {type: Boolean, requied: true},
-    type: { type: String, required: false },
+    offence: { type: String, required: false },
     policeId: { type: String, required: false },
     fineManagementId: { type: String, required: true },
     vehicalNumber: { type: String, required: false },
