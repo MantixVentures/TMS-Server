@@ -24,6 +24,7 @@ const policeIssueFineSchema: Schema = new Schema<IPoliceIssueFine>({
     type: { type: String, required: false },
     policeId: { type: String, required: false },
     fineManagementId: { type: String, required: true },
+    vehicalNumber: { type: String, required: false },
 });
 
 const policeIssueFine: Model<IPoliceIssueFine> = mongoose.model<IPoliceIssueFine>("PoliceIssueFine", policeIssueFineSchema)
