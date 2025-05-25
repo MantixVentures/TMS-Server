@@ -4,6 +4,21 @@ import {policeIssueFineServices} from "../Services/policeIssueFineServices";
 
 const PoliceIssueFineServices = new policeIssueFineServices();
 
+export const updateFinesById = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const id: string = req.params.id;
+        const updates = req.body;
+
+        const updatedFine = await PoliceIssueFineServices.updateFinesById(id, updates);
+
+        res.status(200).json({ message: "Fine updated successfully", data: updatedFine });
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ message: "Failed to update fine" });
+    }
+};
+
+
 export const getFinesById = async (_req: Request, res: Response): Promise<void> => {
     try {
         const id: string = _req.params.id;

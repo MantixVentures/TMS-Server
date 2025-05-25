@@ -18,6 +18,17 @@ export class policeIssueFineServices {
         return await newIssuFine.save();
     }
 
+
+    async updateFinesById(id: string, updates: Partial<IPoliceIssueFine>): Promise<IPoliceIssueFine | null> {
+        const updatedFine = await policeIssueFine.findByIdAndUpdate(id, updates, { new: true });
+
+        if (!updatedFine) {
+            throw new Error("Fine not found for the given ID");
+        }
+
+        return updatedFine;
+    }
+
     async getAllPoliceIssueFines(){
 
         const issueFines = await policeIssueFine.find()
