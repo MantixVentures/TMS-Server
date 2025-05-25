@@ -42,8 +42,22 @@ export class policeIssueFineServices {
             return issueFines;
     }
     
+    async getFinesById(id: string): Promise<IPoliceIssueFine> {
+        console.log("Received ID Type:", typeof id);
+        console.log("Received ID Value:", id);
     
-
+        const issueFine = await policeIssueFine.findById(id);
+    
+        console.log(issueFine);
+    
+        if (!issueFine) {
+            throw new Error("There is no fine for that ID");
+        }
+    
+        return issueFine;
+    }
+  
+    
     async getPoliceById (id : string ): Promise<IPoliceIssueFine[]>{
         const policeOfficer = await policeIssueFine.find({policeId:id})
         if(!policeOfficer){

@@ -4,6 +4,18 @@ import {policeIssueFineServices} from "../Services/policeIssueFineServices";
 
 const PoliceIssueFineServices = new policeIssueFineServices();
 
+export const getFinesById = async (_req: Request, res: Response): Promise<void> => {
+    try {
+        const id: string = _req.params.id;
+        const issueFines = await PoliceIssueFineServices.getFinesById(id);
+
+        res.status(200).json({ message: "Fines retrieved successfully", data: issueFines });
+    } catch (error) {
+        res.status(400).json({ message: "server error" });
+    }
+
+};
+
 export const addpoliceIssueFine = async (req: Request, res: Response): Promise<void> => {
     try {
         const { civilUserName, civilNIC, offence,type, issueLocation, vehicalNumber, date, time, isPaid, policeId, fineManagementId } = req.body;
@@ -53,5 +65,4 @@ export const getPoliceById = async (_req: Request, res: Response): Promise<void>
     } catch (error) {
         res.status(400).json({ message: "server error" });
     }
-
 };
